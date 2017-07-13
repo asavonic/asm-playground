@@ -9,8 +9,10 @@ main:
   movq	%rsp, %rbp
 
   movq	$msg, %rdi           # pass arguments through:
-  call	printf               # %rdi, %rsi, %rdx, %rcx, %r8, %r9
+                             # %rdi, %rsi, %rdx, %rcx, %r8, %r9
                              # others push to stack
+  xor   %rax, %rax           # and also zero %rax (number of vector arguments)
+  call	printf
 
   movq  $0, %rdi             # flush all
   call  fflush
