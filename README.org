@@ -20,3 +20,45 @@ Write a loop to compute a value:
     val += 2;
   }
 #+end_src
+
+** Bubble sort
+Write assembly equivalent to:
+
+#+begin_src c
+  #include <stdbool.h>
+  #include <stdio.h>
+  #include <stdlib.h>
+
+  void bubble_sort(int* arr, size_t size) {
+    if (size <= 1) {
+      return;
+    }
+
+    bool swapped = false;
+    do {
+      swapped = false;
+      for (size_t i = 1; i < size; ++i) {
+        if (arr[i - 1] > arr[i]) {
+          int tmp = arr[i];
+          arr[i] = arr[i - 1];
+          arr[i - 1] = tmp;
+          swapped = true;
+        }
+      }
+    } while (swapped);
+  }
+
+  int main() {
+    const int size = 10;
+    int arr[size];
+    for (size_t i = 0; i < size; ++i) {
+      arr[i] = rand();
+    }
+
+    bubble_sort(arr, size);
+
+    for (size_t i = 0; i < size; ++i) {
+      printf("%d\n", arr[i]);
+    }
+  }
+#+end_src
