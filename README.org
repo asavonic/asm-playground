@@ -62,3 +62,8 @@ Write assembly equivalent to:
     }
   }
 #+end_src
+
+** SIMD Vector add
+Write vector add function in 2 variants: with and without SIMD
+instructions, and compare performace.
+Use ~malloc()~ to allocate memory for 1M ints.
